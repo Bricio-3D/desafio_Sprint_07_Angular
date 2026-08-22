@@ -1,0 +1,144 @@
+.logo {
+    /*logo do formulario*/
+    width: 25%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* LOGO HEADER */
+.logo-header {
+    width: 100%;
+}
+
+body {
+    /*corpo do site*/
+    margin: 0;
+    padding: 0;
+    background-color: #ffffff;
+}
+
+h2 {
+    /*titulo do formulario*/
+    text-align: center;
+    margin-top: 15%;
+    margin-bottom: 30px;
+    color: #04f855;
+    font-family: 'Arial', sans-serif;
+    font-weight: bold;
+    font-size: 30px;
+}
+
+.img-bg {
+    /*div de fundo da secao a esquerda*/
+    width: 50%;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    opacity: 0.6;
+}
+
+.img-fundo {
+    /*imagem de fundo da secao a esquerda*/
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+
+
+form {
+    /* FORM */
+    width: 100%;
+}
+
+.login-form {
+    /*div do formulario de login*/
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    height: 100vh;
+    position: fixed;
+    top: 50%;
+    left: 75%;
+    padding: 40px;
+    border-radius: 10px 0 0 10px;
+    transform: translate(-50%, -50%);
+    background-color: #e2e2e2;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.checkbox-campo {
+    /*div do campo de checkbox*/
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    margin-top: 10px;
+    font-family: 'Arial', sans-serif;
+    flex-direction: row-reverse;
+    gap: 10px;
+}
+
+input[type="checkbox"] {
+    /*checkbox*/
+    color: #888888;
+    border-radius: 20px;
+    width: 25px;
+    height: 25px;
+    margin: 10px;
+}
+
+
+
+div input[type="text"],
+div input[type="password"] {
+    /*campo de entrada do formulario*/
+    width: 90%;
+    padding: 15px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button {
+    /*botao de submit do formulario*/
+    width: 100%;
+    padding: 10px;
+    background-color: #a0a0a0;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    /*botao de submit do formulario ao passar o mouse*/
+    background-color: #04f855;
+}
+
+
+button:disabled {
+    /*botao desabilitado*/
+    background-color: #ccc;
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+button:not(:disabled) {
+    /*botao habilitado*/
+    background-color: #04f855;
+    cursor: pointer;
+}
+
+button:not(:disabled):hover {
+    /*botao habilitado*/
+    background-color: #02d943;
+}
