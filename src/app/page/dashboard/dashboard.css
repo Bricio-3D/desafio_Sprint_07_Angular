@@ -32,6 +32,7 @@ body {
 .conteudo {
     flex: 1;
     padding: 20px;
+    padding-bottom: 80px;
 }
 
 .card {
@@ -41,9 +42,9 @@ body {
     padding: 15px;
     display: flex;
     flex-direction: column;
-    position: relative;
-    width: 20vh;
-    min-height: 50px;
+    width: 200px;
+    min-height: 80px;
+
 }
 
 
@@ -72,27 +73,37 @@ body {
     width: fit-content;
 }
 
-.grafico{
+.grafico {
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-bottom: 20px;
+}
+
+.card-carro {
+    width: 100%;
+    max-width: 750px;
+    display: flex;
+    justify-content: center;
 }
 
 .img-veiculo {
-    position: relative;
-    justify-content: center;
+
     width: 100%;
     height: auto;
+    max-height: 500px;
+    object-fit: contain;
 }
 
 .cards-topo {
     /* Cards do topo */
-    display: grid;
+    display: flex;
     align-items: center;
     justify-content: center;
+    gap: 200px;
     grid-template-columns: repeat(4, 10fr);
-    margin:0 0 20px 0;
+    margin: 0 0 20px 0;
 }
 
 
@@ -103,6 +114,9 @@ body {
     border-top-left-radius: 6px;
     border-top-right-radius: 6px;
     overflow: hidden;
+    width: 100%;
+    margin-top: 290px;
+
 }
 
 table {
@@ -141,6 +155,7 @@ input[type="text"] {
     padding: 4px 8px;
     font-size: 12px;
     width: 90%;
+    text-align: center;
 }
 
 .btn-menu,
@@ -154,14 +169,18 @@ input[type="text"] {
 }
 
 footer.rodape {
+    position: fixed;
+    bottom: 0;
+    left: 0;
     width: 100%;
-    height: 60px;
+    height: 50px;
     background-color: #1351d8;
     border-top: #9c9c9c 2px solid;
     display: flex;
     justify-content: center;
     align-items: center;
     margin-top: auto;
+    z-index: 10;
     /* empurra o footer para o final do flex container */
 }
 

@@ -14,11 +14,13 @@
             <input type="password" id="password" placeholder="Insira sua senha" name="password" required>
         </div>
         <div class="checkbox-campo">
-            <label class="switch">
-                <input type="checkbox" id="remember" name="remember" required>
-                <span class="slider"></span>
-            </label>
-            <span id="remember-label" for="remember">Logar automaticamente</span>
+            <div class="checkbox-span">
+                <span id="remember-label" for="remember">Logar automaticamente</span>
+                <label class="switch">
+                    <input type="checkbox" id="remember" name="remember" required>
+                    <span class="slider"></span>
+                </label>
+            </div>
             <span class="icon-info" title="Mantém você logado neste dispositivo">ⓘ</span>
         </div>
         <button type="submit" id="btnEntrar" disabled>Entrar</button>
