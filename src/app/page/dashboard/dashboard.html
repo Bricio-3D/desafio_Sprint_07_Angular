@@ -1,0 +1,78 @@
+<header class="topo">
+    <button class="btn-menu" aria-label="Abrir menu">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#04f855" stroke-width="2">
+            <line x1="3" y1="6" x2="21" y2="6" />
+            <line x1="3" y1="12" x2="21" y2="12" />
+            <line x1="3" y1="18" x2="21" y2="18" />
+        </svg>
+    </button>
+    <h1 class="titulo-dashboard">Dashboard FORD</h1>
+    <button class="btn-logout" aria-label="Sair">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#8a8a8a" stroke-width="2">
+            <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
+            <polyline points="16 17 21 12 16 7" />
+            <line x1="21" y1="12" x2="9" y2="12" />
+        </svg>
+    </button>
+</header>
+
+<main class="conteudo">
+    <section class="cards-topo">
+        <div class="card">
+            <span class="card-titulo">Veículo</span>
+            <select class="select-veiculo">
+                <option>Mustang</option>
+                <option>Ranger</option>
+                <option>Territory</option>
+                <option>Bronco Sport</option>
+            </select>
+        </div>
+        <div class="card">
+            <span class="card-titulo">Total de Vendas</span>
+            <span class="card-valor">1500</span>
+            <span class="card-unidade">Unid.</span>
+        </div>
+        <div class="card">
+            <span class="card-titulo">Conectados</span>
+            <span class="card-valor">500</span>
+            <span class="card-unidade">Unid.</span>
+        </div>
+        <div class="card">
+            <span class="card-titulo">Update Software</span>
+            <span class="card-valor">750</span>
+            <span class="card-unidade">Unid.</span>
+        </div>
+    </section>
+    <section class="grafico">
+         <div class="card-carro">
+            <img src="img/mustang.png" alt="Mustang" class="img-veiculo">
+        </div>
+    </section>
+    <section class="tabela-dados">
+        <table>
+            <thead>
+                <tr>
+                    <th class="th-top-tabela">Código - Vin</th>
+                    <th class="th-top-tabela">Odômetro</th>
+                    <th class="th-top-tabela">Nível de Combustível</th>
+                    <th class="th-top-tabela">Status</th>
+                    <th class="th-top-tabela">Lat.</th>
+                    <th class="th-top-tabela">Long.</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><input type="text" placeholder="2FBHDUV52Y63NHD22455" readonly></td>
+                    <td>50000 Km</td>
+                    <td>90 %</td>
+                    <td class="status status-on">on</td>
+                    <td>-12,2322</td>
+                    <td>-35,2314</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <footer class="rodape">
+        <p id="copyright">© 2024 Ford Enter. Todos os direitos reservados.</p>
+    </footer>
