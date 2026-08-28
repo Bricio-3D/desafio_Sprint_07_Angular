@@ -11,7 +11,8 @@
     width: 100%;
 }
 
-html,body {
+html,
+body {
     /*corpo do site*/
     margin: 0;
     padding: 0;
@@ -27,8 +28,8 @@ h2 {
     text-align: center;
     margin-top: 15%;
     margin-bottom: 30px;
-    color: #1351d8;
-    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    color: var(--ford-blue);
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     font-weight: bold;
     font-size: 30px;
 }
@@ -79,7 +80,7 @@ form {
     box-sizing: border-box;
 }
 
-.login-form form{
+.login-form form {
     width: 80%;
     margin: 0 auto;
     display: flex;
@@ -104,7 +105,7 @@ form {
 
 }
 
-.checkbox-span{
+.checkbox-span {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -141,20 +142,31 @@ input[type="checkbox"]:checked::after {
 div input[type="text"],
 div input[type="password"] {
     /*campo de entrada do formulario*/
+    background-color: var(--white);
+    color: var(--text-primary);
+    outline: none;
+    transition: 0.3s;
     width: 80vh;
     box-sizing: border-box;
     padding: 15px;
     margin: 10px 0;
-    border: 1px solid #ccc;
+    border: 1px solid var(--gray-300);
     border-radius: 5px;
+}
+
+input[type="text"]:focus, input[type="password"]:focus {
+
+    border-color: var(--ford-blue);
+    box-shadow: 0 0 0 2px rgba(19, 81, 216, 0.15);
 }
 
 button {
     /*botao de submit do formulario*/
     width: 60%;
     padding: 15px;
-    background-color: #1a0bf0;
-    color: #fff;
+    background-color: var(--ford-blue);
+    color: var(--text-light);
+    box-shadow: var(--shadow);
     border: none;
     border-radius: 5px;
     box-sizing: border-box;
@@ -163,13 +175,15 @@ button {
 
 button:hover {
     /*botao de submit do formulario ao passar o mouse*/
-    background-color: #1b357e;
+    background-color: var(--ford-dark-blue);
+    box-shadow: var(--shadow-hover);
 }
 
 
 button:disabled {
     /*botao desabilitado*/
-    background-color: #ccc;
+    background-color: var(--gray-300);
+    color: var(--gray-500);
     cursor: not-allowed;
     opacity: 0.6;
 }
@@ -185,7 +199,7 @@ button:not(:disabled):hover {
     background-color: #1351d8;
 }
 
-#remember-label{
+#remember-label {
     /*label do checkbox*/
     font-family: 'Arial', sans-serif;
     font-size: 14px;
@@ -197,7 +211,7 @@ button:not(:disabled):hover {
     display: inline-block;
     width: 40px;
     height: 22px;
-    
+
 }
 
 .switch input {
@@ -230,17 +244,25 @@ button:not(:disabled):hover {
     transition: 0.3s;
 }
 
-.switch input:checked + .slider {
-    background-color:  #101d64;
+.switch input:checked+.slider {
+    background-color: #101d64;
 }
 
-.switch input:checked + .slider::before {
+.switch input:checked+.slider::before {
     transform: translateX(18px);
 }
 
-.icon-info{
+.icon-info {
     font-size: 28px;
     color: #101d64;
     cursor: pointer;
 }
 
+.mensagem-erro {
+    color: #dc2626;
+    font-size: 14px;
+    font-family: Arial, sans-serif;
+    margin: 5px 0 10px 0;
+    text-align: center;
+    font-weight: bold;
+}

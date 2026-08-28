@@ -6,13 +6,19 @@
         <h1><img src="img/ford.png" alt="Logo" class="logo"></h1>
     </header>
     <h2> Boas-Vindas</h2>
-    <form>
+    <form (ngSubmit)="fazerLogin()">
         <div class="login-campo">
-            <input type="text" id="username" placeholder="Insira seu e-mail" name="username" required>
+            <input type="text" id="username" placeholder="Insira seu e-mail ou usuário" name="username"
+                [(ngModel)]="username" required>
         </div>
         <div class="senha-campo">
-            <input type="password" id="password" placeholder="Insira sua senha" name="password" required>
+            <input type="password" id="password" placeholder="Insira sua senha" name="password" [(ngModel)]="password"
+                required>
         </div>
+        @if (errorMessage) {
+        <p class="mensagem-erro">{{ errorMessage }}</p>
+        }
+
         <div class="checkbox-campo">
             <div class="checkbox-span">
                 <span id="remember-label" for="remember">Logar automaticamente</span>
@@ -23,6 +29,6 @@
             </div>
             <span class="icon-info" title="Mantém você logado neste dispositivo">ⓘ</span>
         </div>
-        <button type="submit" id="btnEntrar" disabled>Entrar</button>
+        <button type="submit" id="btnEntrar" [disabled]="!username || !password">Entrar</button>
     </form>
 </section>
