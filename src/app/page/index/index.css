@@ -105,6 +105,8 @@ form {
 
 }
 
+
+
 .checkbox-span {
     display: flex;
     align-items: center;
@@ -154,7 +156,8 @@ div input[type="password"] {
     border-radius: 5px;
 }
 
-input[type="text"]:focus, input[type="password"]:focus {
+input[type="text"]:focus,
+input[type="password"]:focus {
 
     border-color: var(--ford-blue);
     box-shadow: 0 0 0 2px rgba(19, 81, 216, 0.15);
@@ -265,4 +268,128 @@ button:not(:disabled):hover {
     margin: 5px 0 10px 0;
     text-align: center;
     font-weight: bold;
+}
+
+/* Posicionamento do ícone de olho dentro do campo de senha */
+.senha-campo {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: fit-content;
+}
+
+.btn-toggle-senha {
+    position: absolute;
+    right: 15px;
+    background: none !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    width: auto !important;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-campo,
+.senha-campo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin: 10px 0;
+    width: 80vh;
+}
+
+.login-campo input[type="text"] {
+    flex: 1;
+    margin: 0 !important;
+}
+
+.input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    flex: 1;
+}
+
+.input-wrapper input {
+    width: 100% !important;
+    margin: 0 !important;
+}
+
+.icon-info-input {
+    position: absolute;
+    right: 15px;
+    font-size: 20px;
+    color: #101d64;
+    cursor: pointer;
+}
+
+.icon-info {
+    font-size: 28px;
+    color: #101d64;
+    cursor: pointer;
+}
+
+.btn-toggle-senha {
+    position: absolute;
+    right: 15px;
+    background: none !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    width: auto !important;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+/* 
+   RESPONSIVIDADE (MOBILE E TABLET)
+ */
+
+@media (max-width: 768px) {
+    /* Esconde a imagem lateral para o formulário ocupar a tela toda no celular */
+    .img-bg {
+        display: none;
+    }
+
+    .login-form {
+        width: 100%;
+        position: relative;
+        height: auto;
+        min-height: 100vh;
+        border-radius: 0;
+        padding: 30px 15px;
+    }
+
+    .login-form form {
+        width: 100%;
+        max-width: 400px;
+    }
+
+    .login-campo,
+    .senha-campo,
+    .checkbox-campo {
+        width: 100%;
+        max-width: 400px;
+    }
+
+    div input[type="text"],
+    div input[type="password"] {
+        width: 100%;
+    }
+
+    button[type="submit"] {
+        width: 100%;
+    }
+
+    h2 {
+        font-size: 24px;
+        margin-top: 5%;
+    }
 }

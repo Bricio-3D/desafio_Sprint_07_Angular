@@ -2,15 +2,22 @@ import { Routes } from '@angular/router';
 import { Index } from './page/index';
 import { Dashboard } from './page/dashboard/dashboard';
 import { Home } from './page/home/home';
+import { authGuard } from './guards/auth-guard';
 
 export const routes: Routes = [
 
     { path: '', redirectTo: 'index', pathMatch: 'full' },
-
     { path: 'index', component: Index },
-
-    { path: 'home', component: Home },
-
-    { path: 'dashboard', component: Dashboard }
+    { path: 'home', component: Home, canActivate: [authGuard] },
+    { path: 'dashboard', component: Dashboard, canActivate: [authGuard] }
 
 ];
+
+
+
+
+
+
+
+
+

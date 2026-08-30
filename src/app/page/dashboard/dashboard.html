@@ -21,6 +21,7 @@
 }
 
 <main class="conteudo">
+    @if (veiculoSelecionado) {
     <section class="cards-topo">
         <div class="card">
             <span class="card-titulo">Veículo</span>
@@ -46,11 +47,13 @@
             <span class="card-unidade">Unid.</span>
         </div>
     </section>
+
     <section class="grafico">
         <div class="card-carro">
             <img [src]="veiculoSelecionado.imagem" [alt]="veiculoSelecionado.nome" class="img-veiculo">
         </div>
     </section>
+
     <section class="tabela-dados">
         <table>
             <thead>
@@ -76,7 +79,11 @@
             </tbody>
         </table>
     </section>
+    } @else {
+        <p>Carregando dados da API...</p>
+    }
+</main>
 
-    <footer class="rodape">
-        <p id="copyright">© 2024 Ford Enter. Todos os direitos reservados.</p>
-    </footer>
+<footer class="rodape">
+    <p id="copyright">© 2024 Ford Enter. Todos os direitos reservados.</p>
+</footer>

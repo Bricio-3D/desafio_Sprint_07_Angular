@@ -48,3 +48,11 @@
 .nav-item:hover, .nav-item.active {
     background-color: #d0d0d0;
 }
+
+
+@media (max-width: 768px) {
+    .sidebar {
+        width: 80%;
+        max-width: 250px;
+    }
+}

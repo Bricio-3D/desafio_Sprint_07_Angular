@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { Router } from '@angular/router';
-import {Menu} from '../../component/menu/menu';
-
+import { Menu } from '../../component/menu/menu';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-home',
@@ -13,17 +13,15 @@ import {Menu} from '../../component/menu/menu';
 export class Home {
 
   private router = inject(Router);
-  //Variavel para armazenar o estado do menu
+  private authService = inject(AuthService);
   menuAberto: boolean = false;
 
-  //Função para alternar o estado de aberto/fechado
   toggleMenu(): void {
     this.menuAberto = !this.menuAberto;
   }
 
   logout(): void {
+    this.authService.logout(); // Limpa a sessão
     this.router.navigate(['/index']);
-
   }
-
 }

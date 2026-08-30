@@ -1,6 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-index',
@@ -10,29 +11,38 @@ import { Router } from '@angular/router';
 })
 export class Index {
   private router = inject(Router);
+  private authService = inject(AuthService); // Injeta o serviço HTTP de autenticação
 
-  //variaveis conectadas ao fomulario
   username: string = '';
   password: string = '';
+  remember: boolean = false;
 
-  //Mensagem de erro
-  errorMessage:string ='';
+  errorMessage: string = '';
+  mostrarSenha: boolean = false;
 
-  //Função para enviar o formulario
-  fazerLogin():void {
-
-    this.errorMessage = '';
-
-    //Validação dos dados solicitados (admin/123456)
-    if (this.username === 'admin' && this.password === '123456'){
-      //Sucesso: vai para Home
-      this.router.navigate(['/home']);
-    } else{
-      //Erro: exibe aviso
-      this.errorMessage = 'Usuario ou senha incorretos';
-    }
-
-
+  toggleMostrarSenha(): void {
+    this.mostrarSenha = !this.mostrarSenha;
   }
 
+  limparErro(): void {
+    if (this.errorMessage) {
+      this.errorMessage = '';
+    }
+  }
+
+  // Faz a chamada HTTP para a API validar o login
+  fazerLogin(): void {
+    this.errorMessage = '';
+
+    this.authService.login(this.username, this.password).subscribe({
+      next: () => {
+        // Se a API validar com sucesso, redireciona para a Home
+        this.router.navigate(['/home']);
+      },
+      error: () => {
+        // Se a API recusar o login (usuário ou senha errados)
+        this.errorMessage = 'Usuário ou senha incorretos';
+      }
+    });
+  }
 }
