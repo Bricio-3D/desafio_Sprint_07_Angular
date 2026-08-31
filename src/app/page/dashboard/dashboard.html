@@ -68,7 +68,16 @@
             </thead>
             <tbody>
                 <tr>
-                    <td><input type="text" [value]="veiculoSelecionado.vin" readonly></td>
+                    <td>
+                        <!-- Input editável onde o professor pode digitar/colar o código VIN -->
+                        <input 
+                            type="text" 
+                            id="vinInput"
+                            name="vinInput"
+                            placeholder="Digite o código VIN..." 
+                            [(ngModel)]="vinInput" 
+                            (input)="buscarPorVin()">
+                    </td>
                     <td>{{ veiculoSelecionado.odometro }}</td>
                     <td>{{ veiculoSelecionado.combustivel }}</td>
                     <td class="status" [class.status-on]="veiculoSelecionado.status === 'on'">{{

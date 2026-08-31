@@ -1,4 +1,5 @@
 import { Component, inject, OnInit } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Menu } from '../../component/menu/menu';
 import { AuthService } from '../../services/auth.service';
@@ -7,7 +8,7 @@ import { Veiculo } from '../../models/veiculo.model';
 
 @Component({
   selector: 'app-dashboard',
-  imports: [Menu],
+  imports: [Menu, FormsModule],
   templateUrl: './dashboard.html',
   styleUrl: './dashboard.css',
 })
@@ -19,8 +20,8 @@ export class Dashboard implements OnInit {
   menuAberto: boolean = false;
   veiculos: Veiculo[] = [];
   veiculoSelecionado?: any;
+  vinInput: string = '2FRHDUYS2Y63NHD22455'; // Guarda o VIN digitado pelo usuário
 
-  // VINs cadastrados na API do professor para cada modelo
   private vinsPorVeiculo: { [key: string]: string } = {
     'Ranger': '2FRHDUYS2Y63NHD22454',
     'Mustang': '2RFAASDY54E4HDU34874',
@@ -33,7 +34,7 @@ export class Dashboard implements OnInit {
       next: (dados) => {
         this.veiculos = dados.map((v: any) => {
           const nomeCarro = v.vehicle || v.nome;
-          const vinCarro = this.vinsPorVeiculo[nomeCarro] || '2FRHDUYS2Y63NHD22454';
+          const vinCarro = this.vinsPorVeiculo[nomeCarro] || '2FRHDUYS2Y63NHD22455';
           return {
             ...v,
             nome: nomeCarro,
@@ -47,7 +48,8 @@ export class Dashboard implements OnInit {
 
         if (this.veiculos.length > 0) {
           this.veiculoSelecionado = this.veiculos[0];
-          this.carregarDadosTabela(this.veiculoSelecionado.vin);
+          this.vinInput = this.veiculoSelecionado.vin;
+          this.buscarPorVin();
         }
 
         this.veiculos.forEach((v: any) => {
@@ -63,15 +65,16 @@ export class Dashboard implements OnInit {
     });
   }
 
-  // Aceita vin como opcional (vin?: string) para satisfazer o TypeScript
-  carregarDadosTabela(vin?: string): void {
-    if (!vin) return;
+  // Busca os dados da tabela na API ao digitar um novo código VIN
+  buscarPorVin(): void {
+    if (!this.vinInput || this.vinInput.trim() === '') return;
 
-    this.veiculoService.getVehicleData(vin).subscribe({
+    this.veiculoService.getVehicleData(this.vinInput.trim()).subscribe({
       next: (detalhes) => {
         if (this.veiculoSelecionado) {
           this.veiculoSelecionado = {
             ...this.veiculoSelecionado,
+            vin: this.vinInput,
             odometro: `${detalhes.odometro} Km`,
             combustivel: `${detalhes.nivelCombustivel} %`,
             status: detalhes.status,
@@ -81,9 +84,15 @@ export class Dashboard implements OnInit {
         }
       },
       error: (err) => {
-        console.error('Erro ao carregar dados da tabela:', err);
+        console.error('VIN não encontrado na API:', err);
       }
     });
+  }
+
+  carregarDadosTabela(vin?: string): void {
+    if (!vin) return;
+    this.vinInput = vin;
+    this.buscarPorVin();
   }
 
   toggleMenu(): void {
@@ -101,7 +110,10 @@ export class Dashboard implements OnInit {
     const encontrado = this.veiculos.find((v: any) => (v.nome || v.vehicle) === nomeVeiculo);
     if (encontrado) {
       this.veiculoSelecionado = encontrado;
-      this.carregarDadosTabela(encontrado.vin);
+      if (encontrado.vin) {
+        this.vinInput = encontrado.vin;
+        this.buscarPorVin();
+      }
     }
   }
 }
